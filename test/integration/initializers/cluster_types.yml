@@ -1,0 +1,5 @@
+# - name: Hyper-V
+#   slug: hyper-v
+
+- name: KVM
+  slug: kvm
