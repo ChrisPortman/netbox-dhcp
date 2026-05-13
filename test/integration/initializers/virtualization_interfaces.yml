@@ -1,0 +1,19 @@
+# - description: Network Interface 1
+#   enabled: true
+#   mac_address: 00:77:77:77:77:77
+#   mtu: 1500
+#   name: Network Interface 1
+#   virtual_machine: virtual machine 1
+# - description: Network Interface 2
+#   enabled: true
+#   mac_address: 00:55:55:55:55:55
+#   mtu: 1500
+#   name: Network Interface 2
+#   virtual_machine: virtual machine 1
+
+- description: eth0
+  enabled: true
+  primary_mac_address: 02:00:00:00:00:01
+  mtu: 1500
+  name: eth0
+  virtual_machine: Test VM

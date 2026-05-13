@@ -1,0 +1,10 @@
+-r requirements.txt
+-r netbox/requirements.txt
+
+django-stubs
+mypy
+black
+flake8
+poetry
+pytest
+requests

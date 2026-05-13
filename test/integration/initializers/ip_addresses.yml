@@ -1,0 +1,106 @@
+## Possible Choices:
+##   status:
+##   - active
+##   - reserved
+##   - deprecated
+##   - dhcp
+##   role:
+##   - loopback
+##   - secondary
+##   - anycast
+##   - vip
+##   - vrrp
+##   - hsrp
+##   - glbp
+##   - carp
+##
+## Examples:
+
+# - address: 10.1.1.1/24
+#   device: server01
+#   interface: to-server02
+#   status: active
+#   vrf: vrf1
+# - address: 2001:db8:a000:1::1/64
+#   device: server01
+#   interface: to-server02
+#   status: active
+#   vrf: vrf1
+# - address: 10.1.1.2/24
+#   device: server02
+#   interface: to-server01
+#   status: active
+# - address: 2001:db8:a000:1::2/64
+#   device: server02
+#   interface: to-server01
+#   status: active
+# - address: 10.1.1.10/24
+#   description: reserved IP
+#   status: reserved
+#   tenant: tenant1
+# - address: 2001:db8:a000:1::10/64
+#   description: reserved IP
+#   status: reserved
+#   tenant: tenant1
+
+- address: 172.19.0.1/24
+  status: active
+  tags:
+    - Gateway
+- address: 172.19.0.10/24
+  status: active
+  device: Test Server
+  interface: eth0
+- address: 172.19.0.11/24
+  status: active
+  device: Test Server LAG
+  interface: bond0
+- address: 172.19.0.100/24
+  status: dhcp
+- address: 172.19.0.101/24
+  status: dhcp
+- address: 172.19.0.102/24
+  status: dhcp
+- address: 172.19.0.103/24
+  status: dhcp
+- address: 172.19.0.104/24
+  status: dhcp
+- address: 172.19.0.105/24
+  status: dhcp
+- address: 172.19.0.106/24
+  status: dhcp
+- address: 172.19.0.107/24
+  status: dhcp
+- address: 172.19.0.108/24
+  status: dhcp
+- address: 172.19.0.109/24
+  status: dhcp
+
+- address: 172.19.1.1/24
+  status: active
+  tags:
+    - Gateway
+- address: 172.19.1.10/24
+  status: active
+  virtual_machine: Test VM
+  interface: eth0
+- address: 172.19.1.100/24
+  status: dhcp
+- address: 172.19.1.101/24
+  status: dhcp
+- address: 172.19.1.102/24
+  status: dhcp
+- address: 172.19.1.103/24
+  status: dhcp
+- address: 172.19.1.104/24
+  status: dhcp
+- address: 172.19.1.105/24
+  status: dhcp
+- address: 172.19.1.106/24
+  status: dhcp
+- address: 172.19.1.107/24
+  status: dhcp
+- address: 172.19.1.108/24
+  status: dhcp
+- address: 172.19.1.109/24
+  status: dhcp

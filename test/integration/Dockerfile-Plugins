@@ -1,0 +1,8 @@
+FROM netboxcommunity/netbox:v4.6
+ENV VIRTUAL_ENV=/opt/netbox/venv
+
+RUN apt-get update && apt-get install -y git && apt-get clean
+
+COPY --chown=999:0 . /plugin_dhcp
+RUN /usr/local/bin/uv pip install -r /plugin_dhcp/test/integration/plugin_requirements.txt
+RUN sed -i '/.\/manage.py migrate --no-input/a  ./manage.py load_initializer_data --path /plugin_dhcp/test/integration/initializers' /opt/netbox/docker-entrypoint.sh

@@ -1,0 +1,14 @@
+services:
+  netbox:
+    image: netbox:latest-plugins
+    ports:
+      - 8000:8080
+    build: &build
+      context: ../..
+      dockerfile: test/integration/Dockerfile-Plugins
+    volumes:
+      - ./initializers:/opt/netbox/netbox/initializers:ro
+  netbox-worker:
+    image: netbox:latest-plugins
+    build:
+      <<: *build

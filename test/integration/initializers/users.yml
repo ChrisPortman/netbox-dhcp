@@ -1,0 +1,22 @@
+# technical_user:
+#   token:
+#     key: Xaeboophoo8e # Random identifier (12 characters) for the token, but not secret.  #gitleaks:allow
+#     value: 0123456789technicaluser789abcdef01234567 # must be looooong!  #gitleaks:allow
+# reader:
+#   password: reader  #gitleaks:allow
+# writer:
+#   password: writer  #gitleaks:allowt
+# jdoe:
+#   first_name: John
+#   last_name: Doe
+#   token:
+#     key: Ohje7giet3uT # Random identifier (12 characters) for the token, but not secret.  #gitleaks:allow
+#     value: 0123456789jdoe789abcdef01234567jdoe #gitleaks:allow
+#   is_active: True
+#   is_superuser: False
+#   email: john.doe@example.com
+dhcp:
+  password: password
+  token:
+    key: Ohje7giet3uT
+    value: 215e4324a3a621a5ea1619d6c08c6d3b90bf19c9
