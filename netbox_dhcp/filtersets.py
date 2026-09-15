@@ -4,12 +4,14 @@ from utilities.filters import (
     MultiValueDateTimeFilter,
     MultiValueMACAddressFilter,
 )
+from utilities.filtersets import register_filterset
 
 from netbox.filtersets import NetBoxModelFilterSet
 
 from .models import DhcpLease
 
 
+@register_filterset
 class DhcpLeaseFilterSet(
     NetBoxModelFilterSet,
 ):
@@ -18,26 +20,6 @@ class DhcpLeaseFilterSet(
         label=_('MAC address'),
     )
 
-    client_id = MultiValueCharFilter(
-        field_name='client_id',
-        label=_('Client ID'),
-    )
-
-    hosthame = MultiValueCharFilter(
-        field_name='hostname',
-        label=_('Hostname'),
-    )
-
-    lease_time = MultiValueDateTimeFilter(
-        field_name='lease_time',
-        label=_('Lease Time'),
-    )
-
-    expire_time = MultiValueDateTimeFilter(
-        field_name='expire_time',
-        label=_('Expire Time'),
-    )
-
     class Meta:
         model = DhcpLease
-        fields = []
+        fields = ['client_id', 'hostname', 'lease_time', 'expire_time']

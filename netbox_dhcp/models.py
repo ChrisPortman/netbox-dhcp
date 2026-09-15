@@ -12,7 +12,6 @@ from dcim.models import (
     Platform,
     Site,
 )
-from netbox.models.features import JobsMixin
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.http import Http404
@@ -29,9 +28,11 @@ from tenancy.models import Tenant
 from virtualization.models import Cluster, VirtualMachine, VMInterface
 
 from netbox.models import NetBoxModel
+from netbox.models.features import JobsMixin
 from netbox.plugins.utils import get_plugin_config
 
 logger = logging.getLogger('netbox_dhcp')
+
 
 class DhcpLeaseExpireTime(models.DateTimeField):
     def pre_save(self, model_instance: 'DhcpLease', add: bool) -> Any:
@@ -69,7 +70,7 @@ class DhcpLeaseIPAddress(models.OneToOneField):
         For options 1 and 2, validate the the IP addresses are in the same subnet as the receiving IP.
         '''
 
-        interface: Interface |VMInterface | None = None
+        interface: Interface | VMInterface | None = None
         ip: IPAMIPAddress | None = None
 
         receiving_ip = data.receiving_ip
@@ -125,7 +126,7 @@ class DhcpLeaseIPAddress(models.OneToOneField):
         return None
 
     def resolve_device_ip(self, data: 'DhcpLease', interface: Interface | VMInterface) -> IPAMIPAddress | None:
-        """ If the MAC address resolved an interface, and the corresponding device
+        """If the MAC address resolved an interface, and the corresponding device
         has a primary_ip in the correct network, use it
         """
         device = getattr(interface, "device", getattr(interface, "virtual_machine", None))
@@ -191,8 +192,8 @@ def dhcp_addresses_for_prefix(prefix: Prefix) -> list[IPAMIPAddress]:
 
 class DhcpLease(ConfigContextModel, NetBoxModel, JobsMixin):
     mac_address = models.CharField(max_length=20, db_index=True)
-    hostname = models.CharField(max_length=100, blank=True, null=True)
-    client_id = models.CharField(max_length=100)
+    hostname = models.CharField(max_length=100, blank=True, null=True, db_index=True)
+    client_id = models.CharField(max_length=100, db_index=True)
     receiving_ip = models.GenericIPAddressField()
     requested_ip = models.GenericIPAddressField(null=True, blank=True)
 
