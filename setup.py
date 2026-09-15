@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='netbox-dhcp',
-    version='0.1',
+    version='4.7.1',
     description='Managed DHCP leases from Netbox',
     install_requires=[],
     packages=find_packages(),

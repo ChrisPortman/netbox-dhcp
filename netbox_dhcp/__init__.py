@@ -5,7 +5,7 @@ class NetBoxDHCPConfig(PluginConfig):
     name = 'netbox_dhcp'
     verbose_name = ' NetBox DHCP'
     description = 'Manage DHCP Leases'
-    version = '0.1'
+    version = '4.7.1'
     base_url = 'dhcp'
     required_settings = []
     default_settings = {
